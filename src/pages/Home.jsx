@@ -8,9 +8,7 @@ function Home(props) {
     <>
       <Navbar />
       <Box>
-        <Container>
-          <Products />
-        </Container>
+        <Container>{/* <Products /> */}</Container>
       </Box>
     </>
   );

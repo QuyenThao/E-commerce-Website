@@ -28,7 +28,7 @@ const products = [
   },
   {
     id: 4,
-    name: 'Studio Chair',
+    name: 'Sleeve Odio External',
     salePrice: '$150.00',
     image:
       'https://cdn.shopify.com/s/files/1/2173/3027/products/product-kodo-25_2d620352-31cc-4333-83e5-724ed6ea6117.jpg?v=1499921353',

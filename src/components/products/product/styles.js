@@ -30,7 +30,8 @@ export default makeStyles(() => ({
     color: 'black',
     width: '100%',
     transition: '.2s ease-out',
-    opacity: '0',
+    boxSizing: 'boder-box',
+    overflow: 'hidden',
   },
   addToCartBtn: {
     width: '100%',
@@ -61,7 +62,7 @@ export default makeStyles(() => ({
     fontWeight: '400',
     transition: '0.2s ease',
     '&:hover': {
-      color: '#da324a',
+      color: '#f50057',
     },
   },
 
