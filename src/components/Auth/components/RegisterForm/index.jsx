@@ -12,6 +12,7 @@ import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import InputField from '../../../form-control/InputField';
 import PasswordField from '../../../form-control/PasswordField';
+import LinearProgress from '@material-ui/core/LinearProgress';
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(6),
@@ -29,6 +30,12 @@ const useStyles = makeStyles((theme) => ({
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
+  },
+  loading: {
+    top: theme.spacing(0.5),
+    left: 0,
+    right: 0,
+    position: 'absolute',
   },
 }));
 
@@ -68,17 +75,22 @@ export default function RegisterForm(props) {
     resolver: yupResolver(schema),
   });
 
-  const handleSubmit = (values) => {
+  const handleSubmit = async (values) => {
     const { onSubmit } = props;
     if (onSubmit) {
-      onSubmit(values);
+      await onSubmit(values);
     }
     form.reset();
   };
 
+  const { isSubmitting } = form.formState;
+
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
+      {isSubmitting && (
+        <LinearProgress className={classes.loading} color="secondary" />
+      )}
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
@@ -139,6 +151,7 @@ export default function RegisterForm(props) {
             </Grid>
           </Grid>
           <Button
+            disabled={isSubmitting}
             type="submit"
             fullWidth
             variant="contained"

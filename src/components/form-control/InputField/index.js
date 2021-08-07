@@ -22,7 +22,6 @@ function InputField(props) {
         control={form.control}
         render={({ field: { onChange, onBlur, value, name } }) => (
           <TextField
-            margin="normal"
             variant="outlined"
             fullWidth
             label={label}
