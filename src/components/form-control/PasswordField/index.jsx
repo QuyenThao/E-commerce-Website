@@ -31,7 +31,7 @@ function PasswordField(props) {
 
   return (
     <>
-      <FormControl fullWidth variant="outlined">
+      <FormControl error={!!hasError} fullWidth variant="outlined">
         <InputLabel htmlFor={name}>{label}</InputLabel>
 
         <Controller

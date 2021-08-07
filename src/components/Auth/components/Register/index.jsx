@@ -1,9 +1,24 @@
+import { unwrapResult } from '@reduxjs/toolkit';
 import React from 'react';
-import RegisterForm from '../RegisterForm/index';
+import { useDispatch } from 'react-redux';
+import { register } from '../../userSlice';
+import RegisterForm from '../RegisterForm/';
 
 function Register() {
-  const handleSubmit = (values) => {
-    console.log('Form Submit: ', values);
+  const dispatch = useDispatch();
+
+  const handleSubmit = async (values) => {
+    try {
+      // auto set username = email
+      values.username = values.email;
+
+      const action = register(values);
+      const resultAction = await dispatch(action);
+      const user = unwrapResult(resultAction);
+      console.log('new user', user);
+    } catch (error) {
+      console.log('Failed to register', error);
+    }
   };
   return (
     <div>
