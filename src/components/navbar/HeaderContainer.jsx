@@ -1,4 +1,5 @@
 import {
+  Box,
   Badge,
   Button,
   IconButton,
@@ -6,17 +7,16 @@ import {
   Toolbar,
 } from '@material-ui/core';
 import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-
 import {
   AccountCircleOutlined,
+  Close,
   Search,
   ShoppingCartOutlined,
-  Close,
 } from '@material-ui/icons';
 import React, { useState } from 'react';
 import Register from '../Auth/components/Register';
+import Login from '../Auth/components/Login';
 
 const useStyles = makeStyles((theme) => ({
   headerContainer: {
@@ -34,12 +34,21 @@ const useStyles = makeStyles((theme) => ({
     right: theme.spacing(2),
     color: theme.palette.grey[600],
   },
+  btn: {
+    color: '#3f51b5',
+  },
 }));
 
 const HeaderContainer = () => {
   const classes = useStyles();
 
+  const MODE = {
+    REGISTER: 'register',
+    LOGIN: 'login',
+  };
+
   const [open, setOpen] = useState(false);
+  const [mode, setMode] = useState(MODE.LOGIN);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -74,7 +83,35 @@ const HeaderContainer = () => {
         </Button>
 
         <DialogContent>
-          <Register closeDialog={handleClose} />
+          {mode === MODE.REGISTER && (
+            <>
+              <Register closeDialog={handleClose} />
+
+              <Box textAlign="center">
+                <Button
+                  className={classes.btn}
+                  variant="body2"
+                  onClick={() => setMode(MODE.LOGIN)}
+                >
+                  Already have an account? Sign in
+                </Button>
+              </Box>
+            </>
+          )}
+          {mode === MODE.LOGIN && (
+            <>
+              <Login closeDialog={handleClose} />
+
+              <Box textAlign="center">
+                <Button
+                  className={classes.btn}
+                  onClick={() => setMode(MODE.REGISTER)}
+                >
+                  Dont have an account? Sign Up
+                </Button>
+              </Box>
+            </>
+          )}
         </DialogContent>
       </Dialog>
     </>
