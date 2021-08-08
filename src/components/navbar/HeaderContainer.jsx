@@ -8,15 +8,17 @@ import {
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
+
 import {
   AccountCircleOutlined,
   Search,
   ShoppingCartOutlined,
+  Close,
 } from '@material-ui/icons';
 import React, { useState } from 'react';
 import Register from '../Auth/components/Register';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   headerContainer: {
     display: 'flex',
     position: 'absolute',
@@ -25,6 +27,12 @@ const useStyles = makeStyles(() => ({
   },
   icon: {
     color: '#2f2626',
+  },
+  closeIcon: {
+    position: 'absolute',
+    top: theme.spacing(2),
+    right: theme.spacing(2),
+    color: theme.palette.grey[600],
   },
 }));
 
@@ -61,14 +69,13 @@ const HeaderContainer = () => {
         open={open}
         aria-labelledby="form-dialog-title"
       >
+        <Button>
+          <Close className={classes.closeIcon} onClick={handleClose} />
+        </Button>
+
         <DialogContent>
-          <Register />
+          <Register closeDialog={handleClose} />
         </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose} color="primary">
-            Cancel
-          </Button>
-        </DialogActions>
       </Dialog>
     </>
   );
