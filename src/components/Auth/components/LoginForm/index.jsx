@@ -70,11 +70,7 @@ export default function RegisterForm(props) {
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       {isSubmitting && (
-        <LinearProgress
-          variant="buffer"
-          className={classes.loading}
-          color="secondary"
-        />
+        <LinearProgress className={classes.loading} color="secondary" />
       )}
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>

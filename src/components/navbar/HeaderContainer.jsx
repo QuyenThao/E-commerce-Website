@@ -1,9 +1,11 @@
 import {
-  Box,
   Badge,
+  Box,
   Button,
   IconButton,
   makeStyles,
+  Menu,
+  MenuItem,
   Toolbar,
 } from '@material-ui/core';
 import Dialog from '@material-ui/core/Dialog';
@@ -15,8 +17,10 @@ import {
   ShoppingCartOutlined,
 } from '@material-ui/icons';
 import React, { useState } from 'react';
-import Register from '../Auth/components/Register';
+import { useDispatch, useSelector } from 'react-redux';
 import Login from '../Auth/components/Login';
+import Register from '../Auth/components/Register';
+import { logout } from '../Auth/userSlice';
 
 const useStyles = makeStyles((theme) => ({
   headerContainer: {
@@ -37,10 +41,28 @@ const useStyles = makeStyles((theme) => ({
   btn: {
     color: '#3f51b5',
   },
+  dropdownMenu: {
+    marginTop: theme.spacing(5),
+    paddingTop: '0',
+    boxShadow: 'none',
+  },
+  dropdownMenuItem: {
+    fontSize: '15px',
+    color: '#666',
+    // borderTop: '1px solid #eaeaea80',
+    width: theme.spacing(20),
+    '&:hover': {
+      color: '#f50057',
+    },
+  },
 }));
 
 const HeaderContainer = () => {
   const classes = useStyles();
+
+  const loggedInUser = useSelector((state) => state.user.current);
+  const isLoggedIn = !!loggedInUser.id;
+  const dispatch = useDispatch();
 
   const MODE = {
     REGISTER: 'register',
@@ -50,20 +72,45 @@ const HeaderContainer = () => {
   const [open, setOpen] = useState(false);
   const [mode, setMode] = useState(MODE.LOGIN);
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
+  const [anchorEl, setAnchorEl] = useState(null);
 
   const handleClose = () => {
     setOpen(false);
   };
+
+  const handleUserClick = (e) => {
+    setAnchorEl(e.currentTarget);
+  };
+
+  const handleCloseMenu = () => {
+    setAnchorEl(null);
+  };
+
+  const handleOpenSignIn = async () => {
+    await setOpen(true);
+    await setMode(MODE.LOGIN);
+    handleCloseMenu();
+  };
+
+  const handleOpenSignUp = async () => {
+    await setOpen(true);
+    await setMode(MODE.REGISTER);
+    handleCloseMenu();
+  };
+
+  const handleLogoutClick = async () => {
+    const action = logout();
+    await dispatch(action);
+    handleCloseMenu();
+  };
+
   return (
     <>
       <Toolbar className={classes.headerContainer}>
         <IconButton className={classes.icon}>
           <Search style={{ fontSize: 30 }} />
         </IconButton>
-        <IconButton className={classes.icon} onClick={handleClickOpen}>
+        <IconButton className={classes.icon} onClick={handleUserClick}>
           <AccountCircleOutlined style={{ fontSize: 25 }} />
         </IconButton>
         <IconButton className={classes.icon}>
@@ -72,6 +119,68 @@ const HeaderContainer = () => {
           </Badge>
         </IconButton>
       </Toolbar>
+
+      {!isLoggedIn && (
+        <Menu
+          anchorEl={anchorEl}
+          keepMounted
+          open={Boolean(anchorEl)}
+          onClose={handleCloseMenu}
+          className={classes.dropdownMenu}
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'right',
+          }}
+          transformOrigin={{
+            vertical: 'top',
+            horizontal: 'right',
+          }}
+        >
+          <MenuItem
+            onClick={handleOpenSignIn}
+            className={classes.dropdownMenuItem}
+          >
+            Sign In
+          </MenuItem>
+          <MenuItem
+            onClick={handleOpenSignUp}
+            className={classes.dropdownMenuItem}
+          >
+            Sign Up
+          </MenuItem>
+        </Menu>
+      )}
+
+      {isLoggedIn && (
+        <Menu
+          anchorEl={anchorEl}
+          keepMounted
+          open={Boolean(anchorEl)}
+          onClose={handleCloseMenu}
+          className={classes.dropdownMenu}
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'right',
+          }}
+          transformOrigin={{
+            vertical: 'top',
+            horizontal: 'right',
+          }}
+        >
+          <MenuItem
+            onClick={handleCloseMenu}
+            className={classes.dropdownMenuItem}
+          >
+            My account
+          </MenuItem>
+          <MenuItem
+            onClick={handleLogoutClick}
+            className={classes.dropdownMenuItem}
+          >
+            Logout
+          </MenuItem>
+        </Menu>
+      )}
 
       <Dialog
         disableEscapeKeyDown
