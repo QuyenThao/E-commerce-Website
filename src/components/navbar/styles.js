@@ -2,9 +2,10 @@ import { makeStyles } from '@material-ui/core';
 
 export default makeStyles(() => ({
   appBar: {
-    background: 'none',
+    background: '#fff',
     display: 'flex',
     boxShadow: '0px 1px #d4dce063',
+    position: 'fixed',
   },
   logo: {
     left: '46%',
