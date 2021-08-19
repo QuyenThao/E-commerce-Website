@@ -15,7 +15,6 @@ export default makeStyles(() => ({
 
   cardImage: {
     position: 'relative',
-    paddingBottom: '40px',
   },
 
   media: {

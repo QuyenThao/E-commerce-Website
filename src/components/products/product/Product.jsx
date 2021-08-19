@@ -12,6 +12,13 @@ import useStyles from './styles';
 
 const Product = ({ product }) => {
   const classes = useStyles();
+  const defaultThumbnail =
+    'http://localhost:1337/uploads/product1_66a8587aaf.jpg';
+
+  const thumbnailUrl = `http://localhost:1337${product.thumbnail[0].url}`;
+  console.log(thumbnailUrl);
+
+  const thumbnailImage = product.thumbnail ? thumbnailUrl : defaultThumbnail;
 
   return (
     <Card className={classes.root}>
@@ -19,7 +26,7 @@ const Product = ({ product }) => {
         <Link to="/">
           <CardMedia
             className={classes.media}
-            image={product.image}
+            image={thumbnailImage}
             title={product.name}
           />
         </Link>
@@ -41,9 +48,9 @@ const Product = ({ product }) => {
         </Link>
         <Typography className={classes.cardPrice} variant="body2">
           <Box component="span" className={classes.originalPrice}>
-            {product.originalPrice}
+            ${product.originalPrice}.00
           </Box>
-          <Box component="span">{product.salePrice}</Box>
+          <Box component="span">${product.salePrice}.00</Box>
         </Typography>
       </CardContent>
     </Card>
