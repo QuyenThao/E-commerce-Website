@@ -3,3 +3,9 @@
 * {
   font-family: 'Rubik', sans-serif !important;
 }
+
+.body {
+  position: relative;
+  top: 65px;
+  margin-bottom: 6rem;
+}

@@ -6,6 +6,7 @@ export default makeStyles(() => ({
     display: 'flex',
     boxShadow: '0px 1px #d4dce063',
     position: 'fixed',
+    marginBottom: '65px',
   },
   logo: {
     left: '46%',

@@ -4,9 +4,7 @@ import carouselImage2 from '../../image/carousel2.jpg';
 
 export default makeStyles((theme) => ({
   carousel: {
-    position: 'relative',
-    top: '50px',
-    height: '44rem',
+    height: '40rem',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     width: `calc(100vw + 48px)`,

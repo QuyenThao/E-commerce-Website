@@ -1,17 +1,16 @@
 import { Box, Container } from '@material-ui/core';
 import React from 'react';
 import Navbar from '../components/navbar/Navbar';
-import FeatureProducts from '../components/products/FeatureProducts';
+import ProductList from '../components/products/ProductList';
 import Carousel from '../components/carousel/Carousel';
 
 function Home(props) {
   return (
     <>
-      <Navbar />
       <Carousel />
       <Box>
         <Container>
-          <FeatureProducts />
+          <ProductList />
         </Container>
       </Box>
     </>

@@ -16,9 +16,9 @@ const productApi = {
     const productList = await axiosClient.get('/products', {
       params: newParams,
     });
-    // const count = await axiosClient.get('/products/count', {
-    //   params: newParams,
-    // });
+    const count = await axiosClient.get('/products/count', {
+      params: newParams,
+    });
 
     // Build response and return
     return {
@@ -26,7 +26,7 @@ const productApi = {
       pagination: {
         page: params._page,
         limit: params._limit,
-        // total: count,
+        total: count,
       },
     };
   },
