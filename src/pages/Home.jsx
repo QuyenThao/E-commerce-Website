@@ -1,8 +1,7 @@
 import { Box, Container } from '@material-ui/core';
 import React from 'react';
-import Navbar from '../components/navbar/Navbar';
-import ProductList from '../components/products/ProductList';
 import Carousel from '../components/carousel/Carousel';
+import FeaturedProduct from '../components/products/FeaturedProduct';
 
 function Home(props) {
   return (
@@ -10,7 +9,7 @@ function Home(props) {
       <Carousel />
       <Box>
         <Container>
-          <ProductList />
+          <FeaturedProduct />
         </Container>
       </Box>
     </>

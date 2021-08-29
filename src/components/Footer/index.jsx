@@ -18,12 +18,14 @@ const useStyles = makeStyles((theme) => ({
   },
   footerContent: {
     display: 'flex',
+    flexWrap: 'wrap',
   },
   logo: {
     width: '25%',
   },
   linkContent: {
     display: 'flex',
+    flexWrap: 'wrap',
     width: '50%',
   },
   item: {
@@ -52,6 +54,7 @@ const useStyles = makeStyles((theme) => ({
   address: {
     width: '100%',
     display: 'flex',
+    flexWrap: 'wrap',
     marginTop: theme.spacing(2),
   },
   copyright: {
@@ -83,16 +86,17 @@ function Footer(props) {
       <Container>
         <div className={classes.footerContent}>
           <div className={classes.logo} md={3} sm={2} xs={12}>
-            <Link to="/">
+            <Link to="/" xs={12}>
               <img
                 src="https://cdn.shopify.com/s/files/1/2173/3027/t/123/assets/logo.svg?v=3643094164106701333"
                 alt="logo"
                 className={classes.logoBtn}
+                xs={12}
               />
             </Link>
           </div>
 
-          <div className={classes.linkContent}>
+          <div className={classes.linkContent} xs={12}>
             <div md={4} xs={12}>
               <ul>
                 <li className={classes.item}>About Us</li>
@@ -125,10 +129,10 @@ function Footer(props) {
         </div>
 
         <div className={classes.address}>
-          <div className={classes.copyright}>
+          <div className={classes.copyright} xs={12}>
             Copyright © 2019 Cleversoft. All rights reserved.
           </div>
-          <div className={classes.social}>
+          <div className={classes.social} xs={12}>
             <div className={classes.socialIcons}>
               <Link to="/">
                 <Facebook className={classes.icon} />
