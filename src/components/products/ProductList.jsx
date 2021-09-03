@@ -2,11 +2,12 @@ import { Grid, makeStyles } from '@material-ui/core';
 import { Pagination } from '@material-ui/lab';
 import React, { useEffect, useState } from 'react';
 import productApi from '../../api/productApi';
+import ToolbarTags from '../ToolbarTags';
 import Product from './product/Product';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    marginTop: theme.spacing(10),
+    marginTop: theme.spacing(2),
   },
   pagination: {
     display: 'flex',
@@ -25,6 +26,7 @@ function Products(props) {
   const [filters, setFilters] = useState({
     _page: 1,
     _limit: 12,
+    _sort: 'salePrice:ASC',
   });
 
   useEffect(() => {
@@ -39,15 +41,24 @@ function Products(props) {
     })();
   }, [filters]);
 
-  const handlePageChange = (e, page) => {
+  const handlePageChange = (page) => {
     setFilters((prevFilters) => ({
       ...prevFilters,
       _page: page,
     }));
   };
 
+  const handleSortChange = (newSortValue) => {
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      _sort: newSortValue,
+    }));
+  };
+
   return (
     <main className={classes.root}>
+      {' '}
+      <ToolbarTags currentSort={filters._sort} onChange={handleSortChange} />
       <Grid container justify="Content" spacing={4}>
         {productList.map((product) => (
           <Grid item key={product.id} xs={6} sm={6} md={4} lg={4}>

@@ -2,11 +2,10 @@ import { Container, Grid, makeStyles } from '@material-ui/core';
 import React from 'react';
 import BreadcumbPosition from '../components/BreadcrumbPosition';
 import ProductList from '../components/products/ProductList';
-import ToolbarTags from '../components/ToolbarTags';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    marginTop: theme.spacing(8),
+    marginTop: theme.spacing(10),
   },
   gridContainer: {
     flexWrap: 'nowrap',
@@ -34,7 +33,6 @@ function Shop(props) {
         <Grid container className={classes.gridContainer}>
           <Grid item className={classes.left}>
             <h2 className={classes.title}>Products (29)</h2>
-            <ToolbarTags />
             <ProductList />
           </Grid>
           <Grid item className={classes.right}>

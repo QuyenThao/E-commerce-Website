@@ -1,13 +1,9 @@
-import React from 'react';
-import { Button, makeStyles } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core';
 import {
-  GridOff,
-  GridOnOutlined,
-  GridOnTwoTone,
-  KeyboardArrowDownRounded,
-  MenuTwoTone,
+  GridOnOutlined, MenuTwoTone
 } from '@material-ui/icons';
 import clsx from 'clsx';
+import React from 'react';
 import downArrowBtn from '../../image/down-arrow.svg';
 
 const useStyles = makeStyles((theme) => ({
@@ -21,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '14px',
     fontWeight: '700',
     letterSpacing: theme.spacing(0.1),
+    marginBottom: theme.spacing(4),
   },
   title: {
     display: 'flex',
@@ -69,8 +66,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ToolbarTags = () => {
+const ToolbarTags = ({ currentSort, onChange }) => {
   const classes = useStyles();
+
+  const handleSortChange = (e) => {
+    if (onChange) onChange(e.target.value);
+  };
+
   return (
     <div className={classes.collectionView}>
       <label className={classes.title}>View as</label>
@@ -79,17 +81,21 @@ const ToolbarTags = () => {
         <MenuTwoTone className={clsx(classes.button, classes.unActiveBtn)} />
       </div>
       <div className={classes.browseTags}>
-        <select className={classes.sortBy}>
-          <option value="1">Sort by feature</option>
-          <option value="2">Sort by price: Low to high</option>
-          <option value="3">Sort by price: High to low</option>
-          <option value="4" selected="selected">
+        <select
+          className={classes.sortBy}
+          onChange={handleSortChange}
+          value={currentSort}
+        >
+          {/* <option value="1">Sort by feature</option> */}
+          <option value="salePrice:ASC">Sort by price: Low to high</option>
+          <option value="salePrice:DESC">Sort by price: High to low</option>
+          {/* <option value="4" selected="selected">
             Sort by alphabetically,A-Z
           </option>
           <option value="5">Sort by alphabetically,Z-A</option>
           <option value="6">Sort by date: Old to new</option>
           <option value="7">Sort by date: New to old</option>
-          <option value="8">Sort by best selling</option>
+          <option value="8">Sort by best selling</option> */}
         </select>
       </div>
     </div>
