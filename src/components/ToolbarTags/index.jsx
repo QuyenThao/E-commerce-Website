@@ -1,7 +1,5 @@
 import { makeStyles } from '@material-ui/core';
-import {
-  GridOnOutlined, MenuTwoTone
-} from '@material-ui/icons';
+import { GridOnOutlined, MenuTwoTone } from '@material-ui/icons';
 import clsx from 'clsx';
 import React from 'react';
 import downArrowBtn from '../../image/down-arrow.svg';
@@ -86,16 +84,12 @@ const ToolbarTags = ({ currentSort, onChange }) => {
           onChange={handleSortChange}
           value={currentSort}
         >
-          {/* <option value="1">Sort by feature</option> */}
           <option value="salePrice:ASC">Sort by price: Low to high</option>
           <option value="salePrice:DESC">Sort by price: High to low</option>
-          {/* <option value="4" selected="selected">
-            Sort by alphabetically,A-Z
-          </option>
-          <option value="5">Sort by alphabetically,Z-A</option>
-          <option value="6">Sort by date: Old to new</option>
-          <option value="7">Sort by date: New to old</option>
-          <option value="8">Sort by best selling</option> */}
+          <option value="name:ASC">Sort by alphabetically,A-Z</option>
+          <option value="name:DESC">Sort by alphabetically,Z-A</option>
+          <option value="updated_at:ASC">Sort by date: Old to new</option>
+          <option value="updated_at:DESC">Sort by date: New to old</option>
         </select>
       </div>
     </div>

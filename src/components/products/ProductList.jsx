@@ -26,7 +26,7 @@ function Products(props) {
   const [filters, setFilters] = useState({
     _page: 1,
     _limit: 12,
-    _sort: 'salePrice:ASC',
+    _sort: 'name:ASC',
   });
 
   useEffect(() => {
@@ -41,7 +41,7 @@ function Products(props) {
     })();
   }, [filters]);
 
-  const handlePageChange = (page) => {
+  const handlePageChange = (e, page) => {
     setFilters((prevFilters) => ({
       ...prevFilters,
       _page: page,
