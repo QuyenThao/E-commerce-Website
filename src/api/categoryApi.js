@@ -1,9 +1,14 @@
 import axiosClient from './axiosClient';
 
 const categoryApi = {
-  getAll(params) {
-    const url = '/categories';
-    return axiosClient.get(url, { params });
+  async getAll(params) {
+    const productList = await axiosClient.get('/categories', { params });
+    return {
+      data: productList,
+      category: {
+        title: params._title,
+      },
+    };
   },
   get(id) {
     const url = `/categories/${id}`;

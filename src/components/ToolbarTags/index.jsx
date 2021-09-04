@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative',
     padding: theme.spacing(1),
     background: '#f6f8fa',
-    width: '100%',
+    width: 'calc(100%-16px)',
     display: 'flex',
     textTransform: 'uppercase',
     fontSize: '14px',
