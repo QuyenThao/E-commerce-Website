@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core';
+import React, { useEffect, useState } from 'react';
 import categoryApi from '../../../api/categoryApi';
 
 const useStyles = makeStyles((theme) => ({
-  root: {},
+  root: {
+    paddingBottom: theme.spacing(1),
+    borderBottom: '1px solid #ebebeb',
+  },
 
   title: {
     textTransform: 'uppercase',
@@ -41,7 +44,6 @@ const FiltersByCategory = ({ onChange }) => {
             title: x.title,
           }))
         );
-        console.log(categoryList);
       } catch (error) {
         console.log('Fail to fetch category list', error);
       }
@@ -51,7 +53,6 @@ const FiltersByCategory = ({ onChange }) => {
   const handleCategoryClick = (category) => {
     if (onChange) {
       onChange(category.id);
-      console.log('click', category.id);
     }
   };
 
