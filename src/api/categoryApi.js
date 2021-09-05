@@ -1,7 +1,12 @@
 import axiosClient from './axiosClient';
 
 const categoryApi = {
-  async getAll(params) {
+  getAll(params) {
+    const url = '/categories';
+    return axiosClient.get(url, { params });
+  },
+
+  async get(params) {
     const productList = await axiosClient.get('/categories', { params });
     return {
       data: productList,
@@ -10,18 +15,17 @@ const categoryApi = {
       },
     };
   },
-  get(id) {
-    const url = `/categories/${id}`;
-    return axiosClient.get(url);
-  },
+
   add(data) {
     const url = '/categories';
     return axiosClient.post(url, data);
   },
+
   update(data) {
     const url = `/categories/${data.id}`;
     return axiosClient.patch(url, data);
   },
+
   remove(id) {
     const url = `/categories/${id}`;
     return axiosClient.delete(url);

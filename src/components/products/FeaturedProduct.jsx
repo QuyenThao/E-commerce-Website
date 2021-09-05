@@ -26,7 +26,7 @@ function Products() {
   useEffect(() => {
     (async () => {
       try {
-        const { data, category } = await categoryApi.getAll(filters);
+        const { data, category } = await categoryApi.get(filters);
         const featuresProducts = data[0].products;
         setProductList(featuresProducts);
         setCategoryTags(category);
