@@ -1,7 +1,9 @@
+import { makeStyles } from '@material-ui/core';
 import React from 'react';
+import FiltersByBrand from './filters/FiltersByBrand';
 import FiltersByCategory from './filters/FiltersByCategory';
 import FiltersByPrice from './filters/FiltersByPrice';
-import { makeStyles } from '@material-ui/core';
+import FiltersBySize from './filters/FiltersBySize';
 
 const useStyles = makeStyles((theme) => ({
   filters: {
@@ -21,14 +23,16 @@ function ProductsFilters({ filters, onChange }) {
     onChange(newFilters);
   };
 
-  const handlePriceChange = (values) => {
+  const handleChange = (values) => {
     if (onChange) onChange(values);
   };
 
   return (
     <div className={classes.filters}>
       <FiltersByCategory onChange={handleCategoryChange} />
-      <FiltersByPrice onChange={handlePriceChange} />
+      <FiltersByPrice onChange={handleChange} />
+      <FiltersBySize onChange={handleChange} />
+      <FiltersByBrand onChange={handleChange} />
     </div>
   );
 }

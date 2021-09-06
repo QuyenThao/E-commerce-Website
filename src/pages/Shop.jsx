@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   right: {
-    width: theme.spacing(34),
+    width: theme.spacing(36),
   },
   title: {
     fontSize: '28px',
@@ -88,7 +88,7 @@ function Shop(props) {
       <Container spacing={3} className={classes.root}>
         <Grid container className={classes.gridContainer}>
           <Grid item className={classes.left}>
-            <h2 className={classes.title}>Products</h2>
+            <h2 className={classes.title}>Products ({pagination.total})</h2>
             <ToolbarTags
               currentSort={filters._sort}
               onChange={handleSortChange}

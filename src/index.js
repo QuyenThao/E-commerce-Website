@@ -9,15 +9,13 @@ import reportWebVitals from './reportWebVitals';
 import { SnackbarProvider } from 'notistack';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <Router>
-        <SnackbarProvider maxSnack={2}>
-          <App />
-        </SnackbarProvider>
-      </Router>
-    </Provider>
-  </React.StrictMode>,
+  <Provider store={store}>
+    <Router>
+      <SnackbarProvider maxSnack={2}>
+        <App />
+      </SnackbarProvider>
+    </Router>
+  </Provider>,
   document.getElementById('root')
 );
 

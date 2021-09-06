@@ -9,7 +9,7 @@ import React, { useState } from 'react';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    marginTop: theme.spacing(3),
+    marginTop: theme.spacing(4),
     paddingBottom: theme.spacing(4),
     borderBottom: '1px solid #ebebeb',
   },

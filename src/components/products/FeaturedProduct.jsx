@@ -49,7 +49,7 @@ function Products() {
         categoryTags={categoryTags.title}
         onChange={handleCategoryChange}
       />
-      <Grid container justify="Content" spacing={4}>
+      <Grid container spacing={4}>
         {productList.map((product) => (
           <Grid item key={product.id} xs={6} sm={6} md={4} lg={3}>
             <Product product={product} />
