@@ -3,6 +3,7 @@ import React from 'react';
 import FiltersByBrand from './filters/FiltersByBrand';
 import FiltersByCategory from './filters/FiltersByCategory';
 import FiltersByPrice from './filters/FiltersByPrice';
+import FiltersByServices from './filters/FiltersByServices';
 import FiltersBySize from './filters/FiltersBySize';
 
 const useStyles = makeStyles((theme) => ({
@@ -30,6 +31,7 @@ function ProductsFilters({ filters, onChange }) {
   return (
     <div className={classes.filters}>
       <FiltersByCategory onChange={handleCategoryChange} />
+      <FiltersByServices filters={filters} onChange={handleChange} />
       <FiltersByPrice onChange={handleChange} />
       <FiltersBySize onChange={handleChange} />
       <FiltersByBrand onChange={handleChange} />
