@@ -15,17 +15,16 @@ const useStyles = makeStyles((theme) => ({
 
   list: {
     padding: '0',
-  },
-
-  item: {
-    margin: theme.spacing(3, 0),
-    cursor: 'pointer',
-    listStyle: 'none',
-    color: '#666',
-    fontSize: '14px',
-    animation: 'all 0.3s ease',
-    '&:hover': {
-      color: '#f50057',
+    '& > li': {
+      margin: theme.spacing(3, 0),
+      cursor: 'pointer',
+      listStyle: 'none',
+      fontSize: '14px',
+      animation: 'all 0.3s ease',
+      color: '#666',
+      '&:hover': {
+        color: '#f50057',
+      },
     },
   },
 }));
@@ -52,7 +51,7 @@ const FiltersByCategory = ({ onChange }) => {
 
   const handleCategoryClick = (category) => {
     if (onChange) {
-      onChange(category.id);
+      onChange(category.title);
     }
   };
 
@@ -62,11 +61,7 @@ const FiltersByCategory = ({ onChange }) => {
         <div className={classes.title}>Collections</div>
         <ul className={classes.list}>
           {categoryList.map((category) => (
-            <li
-              key={category.id}
-              onClick={() => handleCategoryClick(category)}
-              className={classes.item}
-            >
+            <li key={category.id} onClick={() => handleCategoryClick(category)}>
               {category.title}
             </li>
           ))}

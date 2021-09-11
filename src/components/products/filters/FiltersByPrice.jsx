@@ -62,6 +62,11 @@ const FiltersByPrice = ({ onChange }) => {
 
   const handleSubmit = () => {
     if (onChange) onChange(values);
+
+    setValues({
+      salePrice_gte: 0,
+      salePrice_lte: 0,
+    });
   };
 
   return (

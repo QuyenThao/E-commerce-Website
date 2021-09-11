@@ -1,8 +1,11 @@
 import { Container, Grid, makeStyles } from '@material-ui/core';
 import { Pagination } from '@material-ui/lab';
-import React, { useEffect, useState } from 'react';
+import queryString from 'query-string';
+import React, { useEffect, useMemo, useState } from 'react';
+import { useHistory, useLocation } from 'react-router';
 import productApi from '../api/productApi';
 import BreadcumbPosition from '../components/BreadcrumbPosition';
+import FiltersViewer from '../components/products/FiltersViewer';
 import ProductList from '../components/products/ProductList';
 import ProductsFilters from '../components/products/ProductsFilters';
 import ToolbarTags from '../components/ToolbarTags';
@@ -33,53 +36,87 @@ const useStyles = makeStyles((theme) => ({
   filters: {
     margin: '220px 0 0 16px',
   },
+  filtersViewer: {
+    margin: '22px 0 0 32px',
+  },
 }));
 
 function Shop(props) {
   const classes = useStyles();
+
+  const history = useHistory();
+  const location = useLocation();
+
+  const queryParams = useMemo(() => {
+    const params = queryString.parse(location.search);
+    return {
+      ...params,
+      _page: Number.parseInt(params._page) || 1,
+      _limit: Number.parseInt(params._limit) || 12,
+      _sort: params._sort || 'name:ASC',
+    };
+  }, [location.search]);
+
   const [productList, setProductList] = useState([]);
   const [pagination, setPagination] = useState({
     limit: 12,
     total: 12,
     page: 1,
   });
-  const [filters, setFilters] = useState({
-    _page: 1,
-    _limit: 12,
-    _sort: 'name:ASC',
-  });
 
   useEffect(() => {
     (async () => {
       try {
-        const { data, pagination } = await productApi.getAll(filters);
+        const { data, pagination } = await productApi.getAll(queryParams);
         setProductList(data);
         setPagination(pagination);
       } catch (error) {
         console.log('fail to load data', error);
       }
     })();
-  }, [filters]);
+  }, [queryParams]);
 
   const handlePageChange = (e, page) => {
-    setFilters((prevFilters) => ({
-      ...prevFilters,
+    const filters = {
+      ...queryParams,
       _page: page,
-    }));
+    };
+
+    history.push({
+      pathname: history.location.pathname,
+      search: queryString.stringify(filters),
+    });
   };
 
   const handleSortChange = (newSortValue) => {
-    setFilters((prevFilters) => ({
-      ...prevFilters,
+    const filters = {
+      ...queryParams,
       _sort: newSortValue,
-    }));
+    };
+
+    history.push({
+      pathname: history.location.pathname,
+      search: queryString.stringify(filters),
+    });
   };
 
   const handleFiltersChange = (newFilters) => {
-    setFilters((prevFilters) => ({
-      ...prevFilters,
+    const filters = {
+      ...queryParams,
       ...newFilters,
-    }));
+    };
+
+    history.push({
+      pathname: history.location.pathname,
+      search: queryString.stringify(filters),
+    });
+  };
+
+  const setNewFilters = (newFilters) => {
+    history.push({
+      pathname: history.location.pathname,
+      search: queryString.stringify(newFilters),
+    });
   };
 
   return (
@@ -90,7 +127,7 @@ function Shop(props) {
           <Grid item className={classes.left}>
             <h2 className={classes.title}>Products ({pagination.total})</h2>
             <ToolbarTags
-              currentSort={filters._sort}
+              currentSort={queryParams._sort}
               onChange={handleSortChange}
             />
             <ProductList data={productList} />
@@ -103,7 +140,11 @@ function Shop(props) {
             />
           </Grid>
           <Grid item className={classes.right}>
-            <ProductsFilters filters={filters} onChange={handleFiltersChange} />
+            <FiltersViewer filters={queryParams} onChange={setNewFilters} />
+            <ProductsFilters
+              filters={queryParams}
+              onChange={handleFiltersChange}
+            />
           </Grid>
         </Grid>
       </Container>

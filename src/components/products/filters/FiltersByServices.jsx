@@ -59,7 +59,7 @@ const FiltersByServices = ({ filters, onChange }) => {
               <FormControlLabel
                 control={
                   <Checkbox
-                    checked={filters[service]}
+                    checked={JSON.parse(filters[service.name] || false)}
                     onChange={handleChange}
                     name={service.name}
                     color="secondary"
