@@ -4,6 +4,7 @@ export default makeStyles(() => ({
   root: {
     maxWidth: '100%',
     boxShadow: 'none',
+    cursor: 'pointer',
     transition: '0.4s ease',
     '&:hover $cardImage $overlay': {
       opacity: '100%',
@@ -61,7 +62,7 @@ export default makeStyles(() => ({
     fontWeight: '400',
     transition: '0.2s ease',
     '&:hover': {
-      color: '#f50057',
+      color: '#da324a',
     },
   },
 

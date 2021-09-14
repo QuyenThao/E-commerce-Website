@@ -1,45 +1,15 @@
-import { Container, Grid, makeStyles } from '@material-ui/core';
+import { Container, Grid } from '@material-ui/core';
 import { Pagination } from '@material-ui/lab';
-import queryString from 'query-string';
-import React, { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useHistory, useLocation } from 'react-router';
-import productApi from '../api/productApi';
-import BreadcumbPosition from '../components/BreadcrumbPosition';
-import FiltersViewer from '../components/products/FiltersViewer';
-import ProductList from '../components/products/ProductList';
-import ProductsFilters from '../components/products/ProductsFilters';
-import ToolbarTags from '../components/ToolbarTags';
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    marginTop: theme.spacing(8),
-  },
-  gridContainer: {
-    flexWrap: 'nowrap',
-  },
-  left: {
-    flex: '1 1 0',
-  },
-
-  right: {
-    width: theme.spacing(36),
-  },
-  title: {
-    fontSize: '28px',
-    marginBottom: '15px',
-    fontWeight: '400',
-  },
-  pagination: {
-    display: 'flex',
-    justifyContent: 'center',
-  },
-  filters: {
-    margin: '220px 0 0 16px',
-  },
-  filtersViewer: {
-    margin: '22px 0 0 32px',
-  },
-}));
+import queryString from 'query-string';
+import BreadcumbPosition from '../../components/BreadcrumbPosition';
+import FiltersViewer from '../../components/products/FiltersViewer';
+import ProductList from '../../components/products/ProductList';
+import ProductsFilters from '../../components/products/ProductsFilters';
+import ToolbarTags from '../../components/ToolbarTags';
+import productApi from '../../api/productApi';
+import useStyles from './styles';
 
 function Shop(props) {
   const classes = useStyles();
@@ -121,7 +91,7 @@ function Shop(props) {
 
   return (
     <>
-      <BreadcumbPosition />
+      <BreadcumbPosition text="Products" />
       <Container spacing={3} className={classes.root}>
         <Grid container className={classes.gridContainer}>
           <Grid item className={classes.left}>

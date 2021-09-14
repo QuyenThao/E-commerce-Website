@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
       cursor: 'pointer',
       listStyle: 'none',
       fontSize: '14px',
-      animation: 'all 0.3s ease',
+      transition: 'all 0.3s ease',
       color: '#666',
       '&:hover': {
         color: '#f50057',

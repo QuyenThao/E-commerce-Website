@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
       marginRight: theme.spacing(1),
       background: '#f6f8fa',
       cursor: 'pointer',
-      animation: 'all 0.3s ease',
+      transition: 'all 0.3s ease',
       '&:hover': {
         background: '#f13958',
         color: '#fff',

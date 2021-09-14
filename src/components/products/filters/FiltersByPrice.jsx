@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
   button: {
     marginTop: theme.spacing(1.5),
     borderColor: '#000',
-    animation: 'all 0.3s ease',
+    transition: 'all 0.3s ease',
     '&:hover': {
       background: '#000',
       color: '#fff',

@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     color: '#666',
     fontSize: '14px',
     borderRadius: '3px',
-    animation: 'all 0.3s ease',
+    transition: 'all 0.3s ease',
     '&:hover': {
       color: '#fff',
       background: '#000',
@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
     width: 'fit-content',
     paddingBottom: '2px',
     borderBottom: '1px solid #666',
-    animation: 'all 0.3s ease',
+    transiiton: 'all 0.3s ease',
     '&:hover': {
       color: '#f50057',
       borderBottom: '1px solid #f50057',

@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
       listStyleType: 'none',
       marginRight: theme.spacing(1.5),
       cursor: 'pointer',
-      animation: 'all 0.3s ease',
+      transition: 'all 0.3s ease',
       '&:hover': {
         color: '#f13958',
       },

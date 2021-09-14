@@ -1,7 +1,6 @@
 import { Box, Container } from '@material-ui/core';
-import React from 'react';
-import Carousel from '../components/carousel/Carousel';
-import FeaturedProduct from '../components/products/FeaturedProduct';
+import Carousel from '../../components/Carousel';
+import FeaturedProduct from '../../components/products/FeaturedProduct';
 
 function Home(props) {
   return (

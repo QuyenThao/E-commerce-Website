@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function BreadcumbPosition(props) {
+function BreadcumbPosition({ text }) {
   const classes = useStyles();
 
   return (
@@ -37,7 +37,7 @@ function BreadcumbPosition(props) {
           Home
         </Link>
         <span className={classes.dot}></span>
-        <span className={classes.text}>Products</span>
+        <span className={classes.text}>{text}</span>
       </Container>
     </div>
   );
