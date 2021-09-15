@@ -29,7 +29,7 @@ const AddToCartForm = ({ onSubmit }) => {
     }
   };
 
-  const [checked, setChecked] = useState(true);
+  const [checked, setChecked] = useState(false);
   const handleChange = (event) => {
     setChecked(event.target.checked);
   };
@@ -56,6 +56,7 @@ const AddToCartForm = ({ onSubmit }) => {
                 onChange={handleChange}
                 name="I agree with terms and conditions"
                 size="small"
+                color="default"
                 className={classes.checkbox}
               />
             }

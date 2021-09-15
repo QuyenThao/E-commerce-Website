@@ -6,6 +6,8 @@ import Delivery from './Delivery';
 import Guides from './Guides';
 import QuestionsForm from './QuestionsForm';
 import useStyles from './styles';
+import SubInfo from './SubInfo';
+import BasicsInfo2 from './BasicsInfo2';
 
 const ProductInfo = ({ product }) => {
   const classes = useStyles();
@@ -39,44 +41,14 @@ const ProductInfo = ({ product }) => {
           <AddToCartForm onSubmit={handleSubmit} />
         </div>
       </div>
-      <div className={classes.viewCountdown}>
-        <span className={classes.icon}></span>
-        <div>
-          Order in The Next <span>10 hours 23 minutes</span> to get it by{' '}
-          <span>Thursday 09/16/2021</span>{' '}
-        </div>
-      </div>
-      <div className={classes.visitors}>
-        <span className={classes.icon}></span>
-        <div>
-          Real Time <span>10</span> Visitors Right Now
-        </div>
-      </div>
-      <div className={classes.shipping}>
-        <span className={classes.icon}></span>
-        <div>
-          Spend <span>$200.00 USD</span> to get Free Shipping
-        </div>
-      </div>
+      <SubInfo />
       <div className={classes.bagdeImage}>
         <img
           src="https://cdn.shopify.com/s/files/1/2173/3027/files/paypal-product1_x2048.png?v=1556790995"
           alt="badge"
         />
       </div>
-      <div className={classes.prMeta}>
-        <div>Categories: </div>
-        <div>Product Type: </div>
-        <div>Barcode: </div>
-      </div>
-      <div className={classes.shareLinks}>
-        Share:
-        <div className={classes.socials}>
-          <a href="https://twitter.com/">Twitter</a>
-          <a href="https://facebook.com/">Facebook</a>
-          <a href="https://pinterest.com/">Pinterest</a>
-        </div>
-      </div>
+      <BasicsInfo2 product={product} />
     </>
   );
 };
