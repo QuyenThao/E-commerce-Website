@@ -1,6 +1,6 @@
-import { Button } from '@material-ui/core';
 import React from 'react';
 import Size from '../../../image/size.png';
+import AddToCartForm from '../AddToCartForm';
 import BasicsInfo from './BasicsInfo';
 import Delivery from './Delivery';
 import Guides from './Guides';
@@ -9,6 +9,11 @@ import useStyles from './styles';
 
 const ProductInfo = ({ product }) => {
   const classes = useStyles();
+
+  const handleSubmit = (values) => {
+    console.log('form submit', values);
+  };
+
   return (
     <>
       <BasicsInfo product={product} />
@@ -31,12 +36,7 @@ const ProductInfo = ({ product }) => {
           </div>
         </div>
         <div className={classes.addToCart}>
-          <div className={classes.qty}></div>
-          <Button className={classes.btn}>Add to cart</Button>
-        </div>
-        <div className={classes.checkout}>
-          <div className={classes.check}>I agree with terms and conditions</div>
-          <div className={classes.checkoutBtn}>Buy it now</div>
+          <AddToCartForm onSubmit={handleSubmit} />
         </div>
       </div>
       <div className={classes.viewCountdown}>
