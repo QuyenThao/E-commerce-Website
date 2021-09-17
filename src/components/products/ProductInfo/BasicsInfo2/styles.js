@@ -14,7 +14,16 @@ export default makeStyles((theme) => ({
   item: {
     listStyleType: 'none',
     marginLeft: '6px',
-    color: '#000',
+    '& > a': {
+      color: '#000',
+      textDecoration: 'none',
+      cursor: 'pointer',
+      transition: 'all .2s ease',
+    },
+
+    '& > a:hover': {
+      textDecoration: 'underline',
+    },
   },
 
   icon: {

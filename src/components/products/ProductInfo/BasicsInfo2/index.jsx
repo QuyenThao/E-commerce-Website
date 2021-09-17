@@ -1,5 +1,6 @@
 import { Facebook, Pinterest, Twitter } from '@material-ui/icons';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import useStyles from './styles';
 
 const BasicsInfo2 = ({ product }) => {
@@ -12,7 +13,9 @@ const BasicsInfo2 = ({ product }) => {
         Categories:
         {categories.map((category, index) => (
           <li key={index} className={classes.item}>
-            {category.title},
+            <Link to={`/products?categories.title=${category.title}`}>
+              {category.title},
+            </Link>
           </li>
         ))}
       </div>

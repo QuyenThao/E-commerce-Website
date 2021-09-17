@@ -26,8 +26,11 @@ const SubInfo = () => {
           <PeopleOutlined className={classes.icon} />
         </span>
         <div className={classes.text}>
-          Real Time <span className={classes.number}>23</span> Visitors Right
-          Now
+          Real Time{' '}
+          <span className={classes.number}>
+            {Math.round(Math.random() * 40)}
+          </span>{' '}
+          Visitors Right Now
         </div>
       </div>
       <div className={classes.shipping}>

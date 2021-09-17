@@ -28,7 +28,7 @@ export default makeStyles((theme) => ({
   },
 
   number: {
-    padding: '2px 6px',
+    padding: '2px 8px',
     background: '#000',
     color: '#fff',
   },

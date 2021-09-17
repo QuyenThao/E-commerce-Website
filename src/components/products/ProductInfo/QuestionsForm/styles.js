@@ -22,6 +22,7 @@ export default makeStyles((theme) => ({
     marginBottom: theme.spacing(3),
     fontSize: '14px',
     border: '1px solid #000',
+    resize: 'none',
     '&:focus': {
       outline: 'none',
     },
