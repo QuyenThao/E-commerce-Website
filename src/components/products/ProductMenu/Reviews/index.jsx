@@ -7,22 +7,29 @@ import useStyles from './styles';
 const Reviews = () => {
   const classes = useStyles();
   const [isOpen, setOpen] = useState(false);
-  const [data, setData] = useState();
+  const [data, setData] = useState([]);
 
   const handleClick = () => {
     setOpen(!isOpen);
   };
 
   const handleSubmit = async (values) => {
-    setData(values);
+    setData((prev) => [...prev, values]);
   };
+
   return (
     <div className={classes.root}>
       <div className={classes.header}>
         <div className={classes.title}>Customer Reviews</div>
         <div className={classes.reviews}>
           <div className={classes.content}>
-            {data !== undefined ? <Review data={data} /> : 'No reviews yet'}
+            {data.length !== 0
+              ? data.map((item, index) => (
+                  <li key={index} className={classes.item}>
+                    <Review data={item} />
+                  </li>
+                ))
+              : 'No reviews yet'}
           </div>
           <Button className={classes.btn} onClick={handleClick}>
             Write a Review

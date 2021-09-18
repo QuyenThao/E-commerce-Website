@@ -15,6 +15,10 @@ export default makeStyles((theme) => ({
     marginBottom: theme.spacing(2),
   },
 
+  item: {
+    listStyleType: 'none',
+  },
+
   reviews: {
     display: 'flex',
     justifyContent: 'space-between',

@@ -2,7 +2,8 @@ import { makeStyles } from '@material-ui/core';
 
 export default makeStyles((theme) => ({
   root: {
-    marginTop: theme.spacing(8),
+    marginTop: theme.spacing(4),
+    paddingBottom: theme.spacing(2),
   },
 
   rating: {
