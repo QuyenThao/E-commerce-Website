@@ -2,6 +2,7 @@ import { Grid, makeStyles } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import categoryApi from '../../api/categoryApi';
 import HeadingTags from '../HeadingTags';
+import Loading from '../Loading';
 import Product from './product/Product';
 
 const useStyles = makeStyles((theme) => ({
@@ -22,6 +23,7 @@ function Products() {
     limit: 12,
     start: 0,
   });
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     (async () => {
@@ -33,6 +35,8 @@ function Products() {
       } catch (error) {
         console.log('fail to load data', error);
       }
+
+      setLoading(false);
     })();
   }, [filters]);
 
@@ -49,13 +53,17 @@ function Products() {
         categoryTags={categoryTags.title}
         onChange={handleCategoryChange}
       />
-      <Grid container spacing={4}>
-        {productList.map((product) => (
-          <Grid item key={product.id} xs={6} sm={6} md={4} lg={3}>
-            <Product product={product} />
-          </Grid>
-        ))}
-      </Grid>
+      {loading ? (
+        <Loading />
+      ) : (
+        <Grid container spacing={4}>
+          {productList.map((product) => (
+            <Grid item key={product.id} xs={6} sm={6} md={4} lg={3}>
+              <Product product={product} />
+            </Grid>
+          ))}
+        </Grid>
+      )}
     </main>
   );
 }

@@ -10,6 +10,7 @@ import ProductsFilters from '../../components/products/ProductsFilters';
 import ToolbarTags from '../../components/ToolbarTags';
 import productApi from '../../api/productApi';
 import useStyles from './styles';
+import Loading from '../../components/Loading';
 
 function Shop(props) {
   const classes = useStyles();
@@ -33,6 +34,7 @@ function Shop(props) {
     total: 12,
     page: 1,
   });
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     (async () => {
@@ -43,6 +45,8 @@ function Shop(props) {
       } catch (error) {
         console.log('fail to load data', error);
       }
+
+      setLoading(false);
     })();
   }, [queryParams]);
 
@@ -100,7 +104,8 @@ function Shop(props) {
               currentSort={queryParams._sort}
               onChange={handleSortChange}
             />
-            <ProductList data={productList} />
+            {loading ? <Loading /> : <ProductList data={productList} />}
+
             <Pagination
               className={classes.pagination}
               color="secondary"

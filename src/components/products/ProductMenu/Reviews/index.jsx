@@ -13,7 +13,7 @@ const Reviews = () => {
     setOpen(!isOpen);
   };
 
-  const handleSubmit = async (values) => {
+  const handleSubmit = (values) => {
     setData((prev) => [...prev, values]);
   };
 

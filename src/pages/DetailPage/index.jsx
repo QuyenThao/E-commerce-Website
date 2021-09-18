@@ -1,15 +1,16 @@
-import { Box, Container, Grid } from '@material-ui/core';
+import { Container, Grid } from '@material-ui/core';
 import React from 'react';
 import { Route, Switch, useRouteMatch } from 'react-router';
 import BreadcumbPosition from '../../components/BreadcrumbPosition';
+import Loading from '../../components/Loading';
 import useProductDetails from '../../components/products/hooks/useProductDetails';
 import ProductInfo from '../../components/products/ProductInfo';
-import ProductThumbnails from '../../components/products/ProductThumbnails';
-import useStyles from './styles';
 import ProductMenu from '../../components/products/ProductMenu';
+import CustomTab from '../../components/products/ProductMenu/CustomTab';
 import Description from '../../components/products/ProductMenu/Description';
 import Reviews from '../../components/products/ProductMenu/Reviews';
-import CustomTab from '../../components/products/ProductMenu/CustomTab';
+import ProductThumbnails from '../../components/products/ProductThumbnails';
+import useStyles from './styles';
 
 const DetailPage = () => {
   const classes = useStyles();
@@ -19,10 +20,9 @@ const DetailPage = () => {
     params: { productId },
   } = useRouteMatch();
   const { loading, product } = useProductDetails(productId);
-  // console.log(product);
   const { name } = product;
   if (loading) {
-    return <Box>Loading...</Box>;
+    return <Loading />;
   }
 
   return (

@@ -39,6 +39,8 @@ export default function RegisterForm({ onSubmit }) {
     if (onSubmit) {
       await onSubmit(values);
     }
+
+    form.reset();
   };
 
   const { isSubmitting } = form.formState;
