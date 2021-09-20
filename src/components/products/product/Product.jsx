@@ -9,10 +9,13 @@ import {
 import React from 'react';
 import useStyles from './styles';
 import { useHistory } from 'react-router';
+import { addToCart } from '../../Auth/cartSlice';
+import { useDispatch } from 'react-redux';
 
 const Product = ({ product }) => {
   const classes = useStyles();
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const defaultThumbnail =
     'http://localhost:1337/uploads/product1_66a8587aaf.jpg';
@@ -23,6 +26,15 @@ const Product = ({ product }) => {
 
   const handleClick = () => {
     history.push(`/products/${product.id}`);
+  };
+
+  const handleAddToCart = () => {
+    const action = addToCart({
+      id: product.id,
+      product,
+      quantity: 1,
+    });
+    dispatch(action);
   };
 
   return (
@@ -39,6 +51,7 @@ const Product = ({ product }) => {
             variant="contained"
             color="primary"
             className={classes.addToCartBtn}
+            onClick={() => handleAddToCart(product)}
           >
             ADD TO CART
           </Button>

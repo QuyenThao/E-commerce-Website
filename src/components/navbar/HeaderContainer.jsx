@@ -13,13 +13,15 @@ import DialogContent from '@material-ui/core/DialogContent';
 import {
   AccountCircleOutlined,
   Close,
+  LocalMallOutlined,
   Search,
-  ShoppingCartOutlined,
 } from '@material-ui/icons';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router';
 import Login from '../Auth/components/Login';
 import Register from '../Auth/components/Register';
+import { cartItemsCountSelector } from '../Auth/selectors';
 import { logout } from '../Auth/userSlice';
 
 const useStyles = makeStyles((theme) => ({
@@ -29,23 +31,28 @@ const useStyles = makeStyles((theme) => ({
     right: '0',
     width: 'auto',
   },
+
   icon: {
     color: '#2f2626',
   },
+
   closeIcon: {
     position: 'absolute',
     top: theme.spacing(2),
     right: theme.spacing(2),
     color: theme.palette.grey[600],
   },
+
   btn: {
     color: '#3f51b5',
   },
+
   dropdownMenu: {
     marginTop: theme.spacing(5),
     paddingTop: '0',
     boxShadow: 'none',
   },
+
   dropdownMenuItem: {
     fontSize: '15px',
     color: '#666',
@@ -55,6 +62,14 @@ const useStyles = makeStyles((theme) => ({
       color: '#f50057',
     },
   },
+
+  badge: {
+    '& > span': {
+      color: '#fff',
+      background: '#f13958',
+      padding: '0',
+    },
+  },
 }));
 
 const HeaderContainer = () => {
@@ -62,7 +77,9 @@ const HeaderContainer = () => {
 
   const loggedInUser = useSelector((state) => state.user.current);
   const isLoggedIn = !!loggedInUser.id;
+  const history = useHistory();
   const dispatch = useDispatch();
+  const cartItemsCount = useSelector(cartItemsCountSelector);
 
   const MODE = {
     REGISTER: 'register',
@@ -104,6 +121,10 @@ const HeaderContainer = () => {
     handleCloseMenu();
   };
 
+  const handleCartClick = () => {
+    history.push('/cart');
+  };
+
   return (
     <>
       <Toolbar className={classes.headerContainer}>
@@ -113,9 +134,12 @@ const HeaderContainer = () => {
         <IconButton className={classes.icon} onClick={handleUserClick}>
           <AccountCircleOutlined style={{ fontSize: 25 }} />
         </IconButton>
-        <IconButton className={classes.icon}>
-          <Badge badgeContent={2} color="secondary">
-            <ShoppingCartOutlined style={{ fontSize: 25 }} />
+        <IconButton className={classes.icon} onClick={handleCartClick}>
+          <Badge badgeContent={cartItemsCount} className={classes.badge}>
+            <LocalMallOutlined
+              className={classes.icon}
+              style={{ fontSize: 25 }}
+            />
           </Badge>
         </IconButton>
       </Toolbar>

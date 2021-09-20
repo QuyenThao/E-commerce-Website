@@ -130,7 +130,7 @@ function Footer(props) {
 
         <div className={classes.address}>
           <div className={classes.copyright} xs={12}>
-            Copyright © 2019 Cleversoft. All rights reserved.
+            Copyright © 2021 Cleversoft. All rights reserved.
           </div>
           <div className={classes.social} xs={12}>
             <div className={classes.socialIcons}>

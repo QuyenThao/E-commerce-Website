@@ -13,6 +13,13 @@ export default makeStyles((theme) => ({
     '& > fieldset': {
       border: 'none',
     },
+    '& > input': {
+      textAlign: 'center',
+      '&::-webkit-outer-spin-button, &::-webkit-inner-spin-button': {
+        '-webkit-appearance': 'none',
+        margin: 0,
+      },
+    },
   },
 
   quantity: {

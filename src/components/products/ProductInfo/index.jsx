@@ -1,19 +1,28 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import Size from '../../../image/size.png';
+import { addToCart } from '../../Auth/cartSlice';
 import AddToCartForm from '../AddToCartForm';
 import BasicsInfo from './BasicsInfo';
+import BasicsInfo2 from './BasicsInfo2';
 import Delivery from './Delivery';
 import Guides from './Guides';
 import QuestionsForm from './QuestionsForm';
 import useStyles from './styles';
 import SubInfo from './SubInfo';
-import BasicsInfo2 from './BasicsInfo2';
 
 const ProductInfo = ({ product }) => {
   const classes = useStyles();
 
-  const handleSubmit = (values) => {
-    console.log('form submit', values);
+  const dispatch = useDispatch();
+
+  const handleSubmit = ({ quantity }) => {
+    const action = addToCart({
+      id: product.id,
+      product,
+      quantity,
+    });
+    dispatch(action);
   };
 
   return (
