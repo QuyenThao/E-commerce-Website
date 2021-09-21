@@ -28,6 +28,7 @@ export default function CartItems({ items, cartTotal, onChange }) {
       <Table sx={{ minWidth: 700 }} aria-label="spanning table">
         <TableHead>
           <TableRow>
+            <TableCell></TableCell>
             <TableCell>PRODUCT</TableCell>
             <TableCell></TableCell>
             <TableCell align="right">QTY</TableCell>
@@ -40,7 +41,7 @@ export default function CartItems({ items, cartTotal, onChange }) {
           ))}
 
           <TableRow>
-            <TableCell rowSpan={3} />
+            <TableCell rowSpan={3} colSpan={2} />
             <TableCell colSpan={2} className={classes.title}>
               Subtotal
             </TableCell>

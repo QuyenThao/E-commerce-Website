@@ -31,4 +31,11 @@ export default makeStyles((theme) => ({
   thumbnail: {
     height: '160px',
   },
+
+  remove: {
+    width: '20px',
+    '& > svg': {
+      cursor: 'pointer',
+    },
+  },
 }));

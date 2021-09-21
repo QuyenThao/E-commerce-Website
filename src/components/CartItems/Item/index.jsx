@@ -1,8 +1,12 @@
 import { TableCell, TableRow } from '@material-ui/core';
+import { ClearRounded } from '@material-ui/icons';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { setQuantity } from '../../../components/Auth/cartSlice';
+import {
+  setQuantity,
+  removeFromCart,
+} from '../../../components/Auth/cartSlice';
 import useStyles from './styles';
 
 function ccyFormat(num) {
@@ -24,9 +28,22 @@ const Item = ({ item }) => {
     }
   };
 
+  const handleRemove = (values) => {
+    const action = removeFromCart({
+      id: values.id,
+      product: values,
+      quantity: values.quantity,
+    });
+    dispatch(action);
+    console.log(action);
+  };
+
   return (
     <>
       <TableRow key={item.id}>
+        <TableCell className={classes.remove}>
+          <ClearRounded onClick={() => handleRemove(item)} />
+        </TableCell>
         <TableCell>
           <Link to={`/products/${item.product.id}`}>
             <img

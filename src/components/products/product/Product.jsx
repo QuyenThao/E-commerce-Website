@@ -7,10 +7,10 @@ import {
   Typography,
 } from '@material-ui/core';
 import React from 'react';
-import useStyles from './styles';
-import { useHistory } from 'react-router';
-import { addToCart } from '../../Auth/cartSlice';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router';
+import { addToCart, showMiniCart } from '../../Auth/cartSlice';
+import useStyles from './styles';
 
 const Product = ({ product }) => {
   const classes = useStyles();
@@ -35,6 +35,7 @@ const Product = ({ product }) => {
       quantity: 1,
     });
     dispatch(action);
+    showMiniCart();
   };
 
   return (
