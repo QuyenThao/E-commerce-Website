@@ -4,8 +4,8 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import {
-  setQuantity,
   removeFromCart,
+  setQuantity,
 } from '../../../components/Auth/cartSlice';
 import useStyles from './styles';
 
@@ -35,7 +35,6 @@ const Item = ({ item }) => {
       quantity: values.quantity,
     });
     dispatch(action);
-    console.log(action);
   };
 
   return (

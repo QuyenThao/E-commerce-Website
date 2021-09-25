@@ -8,7 +8,7 @@ import React from 'react';
 import { Controller } from 'react-hook-form';
 import useStyles from './styles';
 
-PasswordField.propTypes = {
+QuantityField.propTypes = {
   form: PropTypes.object.isRequired,
   name: PropTypes.string.isRequired,
 
@@ -16,7 +16,7 @@ PasswordField.propTypes = {
   disabled: PropTypes.bool,
 };
 
-function PasswordField(props) {
+function QuantityField(props) {
   const classes = useStyles();
   const { form, name } = props;
   const { formState, setValue } = form;
@@ -77,4 +77,4 @@ function PasswordField(props) {
   );
 }
 
-export default PasswordField;
+export default QuantityField;

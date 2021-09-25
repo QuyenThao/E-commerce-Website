@@ -17,7 +17,7 @@ function ccyFormat(num) {
   return `${parseInt(num).toFixed(2)}`;
 }
 
-export default function CartItems({ items, cartTotal, onChange }) {
+export default function CartItems({ items, cartTotal }) {
   const classes = useStyles();
 
   const invoiceTaxes = TAX_RATE * cartTotal;

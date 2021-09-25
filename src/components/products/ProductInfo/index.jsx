@@ -1,3 +1,4 @@
+import { useSnackbar } from 'notistack';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import Size from '../../../image/size.png';
@@ -13,6 +14,7 @@ import SubInfo from './SubInfo';
 
 const ProductInfo = ({ product }) => {
   const classes = useStyles();
+  const { enqueueSnackbar } = useSnackbar();
 
   const dispatch = useDispatch();
 
@@ -23,6 +25,7 @@ const ProductInfo = ({ product }) => {
       quantity,
     });
     dispatch(action);
+    enqueueSnackbar('Added to cart successfully!', { variant: 'success' });
   };
 
   return (

@@ -12,7 +12,7 @@ const Customs = ({ onClick }) => {
   const history = useHistory();
 
   const handleTurnBack = () => {
-    history.push('/');
+    history.push('/products');
   };
 
   const handleCheckout = () => {

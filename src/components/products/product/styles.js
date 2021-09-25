@@ -38,7 +38,7 @@ export default makeStyles(() => ({
     backgroundColor: '#000',
     fontWeight: '400',
     borderRadius: '0',
-    transform: 'translate(0, 100%)',
+    transform: 'translate(0, 105%)',
     transition: '.2s',
     '&:hover': {
       backgroundColor: '#3b3b3b',

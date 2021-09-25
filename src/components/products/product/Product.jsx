@@ -6,14 +6,16 @@ import {
   CardMedia,
   Typography,
 } from '@material-ui/core';
+import { useSnackbar } from 'notistack';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router';
-import { addToCart, showMiniCart } from '../../Auth/cartSlice';
+import { addToCart } from '../../Auth/cartSlice';
 import useStyles from './styles';
 
 const Product = ({ product }) => {
   const classes = useStyles();
+  const { enqueueSnackbar } = useSnackbar();
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -35,7 +37,7 @@ const Product = ({ product }) => {
       quantity: 1,
     });
     dispatch(action);
-    showMiniCart();
+    enqueueSnackbar('Added to cart successfully!', { variant: 'success' });
   };
 
   return (
