@@ -9,8 +9,15 @@ import Error from './pages/Error';
 import Home from './pages/Home';
 import Shop from './pages/Shop';
 import Checkout from './pages/Checkout';
+import { useEffect } from 'react';
+import { useLocation } from 'react-router';
 
 function App() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, [pathname]);
+
   return (
     <>
       <Navbar />

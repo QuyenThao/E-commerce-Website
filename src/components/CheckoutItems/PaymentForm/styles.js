@@ -2,38 +2,28 @@ import { makeStyles } from '@material-ui/core';
 
 export default makeStyles((theme) => ({
   root: {
-    width: '60%',
-    borderRight: '1px solid #eaeaea',
-    paddingTop: theme.spacing(6),
-    paddingRight: theme.spacing(4),
+    margin: theme.spacing(4, 0),
+  },
+
+  adress: {
+    border: '1px solid rgba(224, 224, 224, 1)',
+    borderRadius: '8px',
   },
 
   title: {
-    fontSize: '26px',
     color: '#333',
-    textDecoration: 'none',
+    fontSize: '17px',
+    fontWeight: 400,
   },
 
-  title1: {
-    marginTop: theme.spacing(4),
-    fontSize: '20px',
-    color: '#333',
-    textDecoration: 'none',
+  name: {
+    color: '#545454',
   },
 
-  stepLabel: {
-    color: '#333',
+  price: {
     fontSize: '14px',
-    '& > span > svg.MuiStepIcon-root.MuiStepIcon-completed': {
-      color: '#197bbd',
-    },
-    '& > span > svg.MuiStepIcon-root.MuiStepIcon-active': {
-      color: '#197bbd',
-    },
-  },
-
-  stepper: {
-    paddingLeft: 0,
+    fontWeight: 500,
+    color: '#333',
   },
 
   buttons: {
@@ -50,9 +40,6 @@ export default makeStyles((theme) => ({
     padding: '1.4em 1.7em',
     marginRight: theme.spacing(3),
     fontSize: '13px',
-    color: '#fff',
-    fontWeight: 500,
-    textDecoration: 'none',
     transition: 'all .4s ease',
     '&:hover': {
       background: '#135e90',
@@ -64,5 +51,9 @@ export default makeStyles((theme) => ({
     fontSize: '14px',
     textDecoration: 'none',
     cursor: 'pointer',
+  },
+
+  card: {
+    marginTop: theme.spacing(2),
   },
 }));

@@ -1,6 +1,3 @@
-import React from 'react';
-import useStyles from './styles';
-import Item from './Item';
 import {
   Table,
   TableBody,
@@ -10,8 +7,9 @@ import {
   TableRow,
 } from '@material-ui/core';
 import clsx from 'clsx';
-import { cartItemsSelector, cartTotalSelector } from '../../Auth/selectors';
-import { useSelector } from 'react-redux';
+import React from 'react';
+import Item from './Item';
+import useStyles from './styles';
 
 const TAX_RATE = 0.03;
 
@@ -19,34 +17,32 @@ function ccyFormat(num) {
   return `${parseInt(num).toFixed(2)}`;
 }
 
-const Sidebar = () => {
+const Sidebar = ({ productItems, total }) => {
   const classes = useStyles();
-  const items = useSelector(cartItemsSelector);
-  const cartTotal = useSelector(cartTotalSelector);
 
-  const invoiceTaxes = TAX_RATE * cartTotal;
-  const invoiceTotal = invoiceTaxes + cartTotal;
+  const invoiceTaxes = TAX_RATE * total;
+  const invoiceTotal = invoiceTaxes + total;
   return (
     <div className={classes.root}>
       <TableContainer>
         <Table aria-label="spanning table">
           <TableHead></TableHead>
           <TableBody>
-            {items.map((item, index) => (
+            {productItems.map((item, index) => (
               <Item key={index} item={item} />
             ))}
             <TableRow className={clsx(classes.subtotal, classes.row)}>
               <TableCell colSpan={2} className={classes.title}>
                 Subtotal
               </TableCell>
-              <TableCell align="right">${ccyFormat(cartTotal)}</TableCell>
+              <TableCell align="right">${ccyFormat(total)}</TableCell>
             </TableRow>
             <TableRow className={classes.row}>
               <TableCell colSpan={2} className={classes.title}>
                 Shipping
               </TableCell>
               <TableCell align="right" className={classes.shipping}>
-                Calculated at next step
+                Free Shipping
               </TableCell>
             </TableRow>
             <TableRow className={classes.tax}>

@@ -6,7 +6,8 @@ import * as yup from 'yup';
 import ContactForm from './ContactForm';
 import ShippingAdress from './ShippingAdress';
 import useStyles from './styles';
-const InfomationForm = () => {
+
+const InfomationForm = ({ next }) => {
   const classes = useStyles();
   const loggedInUser = useSelector((state) => state.user.current);
   const schema = yup.object().shape({
@@ -46,7 +47,7 @@ const InfomationForm = () => {
   });
 
   const handleSubmit = (values) => {
-    console.log(values);
+    if (next) next(values);
   };
 
   return (
