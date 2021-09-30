@@ -37,7 +37,7 @@ const Form = ({ infomationData, backStep, nextStep, onCaptureCheckout }) => {
     });
 
     if (error) {
-      console.log({ error });
+      console.log('[error]', error);
     } else {
       const orderData = {
         line_items: items,
